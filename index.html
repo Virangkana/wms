@@ -1,50 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-    <title>Example Leaflet Add WMS From GeoServer</title>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
-  </head> 
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-    }
-    html, body, #map {
-      height: 100%;
-    }
-  </style>
-  <body>
-    <div id="map"></div>
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <script>
-    var map = new L.Map('map', { center: new L.LatLng(16.7434523,100.1961117), 
-                                zoom: 14, 
-                                attributionControl:true, 
-                                zoomControl:false,
-                                minZoom:6});
-    var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  	var osm = new L.TileLayer(osmUrl,
-                              {minZoom: 8, 
-                               maxZoom: 18, 
-                               attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'});
-    map.addLayer(osm);
-	
-    var wmsLayer1= L.tileLayer.wms("http://gservices.gistda.or.th/geoserver/wms", {
-        layers: 'L02_Thaichote_GISTDA_2m:L02_ThaichoteNorth_GISTDA_2m_pm',
-        format: 'image/png',
-        transparent: true
-    });
-    map.addLayer(wmsLayer1);
-
-    var wmsLayer2= L.tileLayer.wms("http://ows.gistda.or.th/geoserver/wms", {
-        layers: 'fgds54_beta:L06_Transportation_MOT_road_2011_50k',
-        format: 'image/png',
-        transparent: true
-    });
-    map.addLayer(wmsLayer2);
-    
-    </script>
+<head>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+<![endif]-->
+ 
+<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+<style>
+#map {
+	width:960px;
+	height:500px;
+}
+</style>
+</head>
+ 
+<body>
+	<div id="map"></div>
+<script>
+window.onload = function () {
+ 	var map = L.map('map').setView([0.0,-10.0], 2);
+ 	
+	L.tileLayer.wms('http://vmap0.tiles.osgeo.org/wms/vmap0', {
+		layers: 'basic',
+		format: 'image/png',
+		transparent: true,
+		attribution: 'OSGEO'
+	}).addTo(map);
+};
+</script>
+</body>
 </html>
