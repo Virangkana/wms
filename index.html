@@ -27,22 +27,7 @@
          // Adding layer to map
          map.addLayer(layer);
 
-         // Icon options
-         var iconOptions = {
-            iconUrl: 'logo.png',
-            iconSize: [40, 40]
-         }
-
-         // Creating a custom icon
-         var customIcon = L.icon(iconOptions);
-
-         // Specify marker options
-         var markerOptions = {
-            title: "GIS Tutorials",
-            clickable: true,
-            draggable: true,
-            icon: customIcon
-         }
+         
 
          // Creating a marker
          var marker = L.marker([23.8103, 90.4125], markerOptions);
