@@ -19,8 +19,8 @@
 window.onload = function () {
  	var map = L.map('map').setView([0.0,-10.0], 2);
  	
-	L.tileLayer.wms(' http://vmap0.tiles.osgeo.org/wms/vmap0?LAYERS=basic&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&FORMAT=image%2Fjpeg&SRS=EPSG%3A4326&BBOX=45,-90,90,-45&WIDTH=256&HEIGHT=256', {
-		layers: 'basic',
+	L.tileLayer.wms('https://basemap.nationalmap.gov/arcgis/services/USGSShadedReliefOnly/MapServer/WMSServer?request=GetCapabilities&service=WMS', {
+		layers: '0',
 		format: 'image/png',
 		transparent: true,
 		attribution: 'OSGEO'
